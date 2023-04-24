@@ -5,7 +5,7 @@ const fs = require("fs");
 const path = require("path");
 
 const app = express();
-app.use(cors({ origin: '*' }));
+app.use(cors({ origin: "https://stackduo-podcasts.netlify.app" }));
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
