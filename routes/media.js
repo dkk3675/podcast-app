@@ -6,7 +6,7 @@ const path = require("path");
 const cors = require("cors");
 
 const app = express();
-app.use(cors({ origin: "https://stackduo-podcasts.netlify.app" }));
+app.use(cors({ origin: "*" }));
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
