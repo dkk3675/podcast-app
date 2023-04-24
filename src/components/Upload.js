@@ -27,12 +27,13 @@ const Upload = ({ getAllMedias }) => {
       .then((success) => {
         getAllMedias();
         alert("Submitted successfully");
+        window.location.reload();
       })
       .catch((error) => {
         console.log(error);
         alert("Error happened!");
       });
-    window.location.reload();
+    // window.location.reload();
   };
   return (
     <div className="flex flex-wrap w-full justify-center items-center">

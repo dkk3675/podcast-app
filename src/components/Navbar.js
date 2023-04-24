@@ -13,6 +13,8 @@ const Navbar = ({
   const handleLogout = () => {
     sessionStorage.setItem("name", "------------");
     sessionStorage.setItem("isLogged", "false");
+    sessionStorage.setItem("isAdmin", "false");
+    sessionStorage.removeItem("email");
     setIsLogged(false);
     window.location.reload();
   };

@@ -1,12 +1,49 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Podcast from "./podcast.png";
+import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import '../index.css';
+import "../index.css";
 
 const Card = ({ name, speaker, category, type, description, videos }) => {
   const [isLiked, setIsLiked] = useState(false);
+  useEffect(() => {
+    try {
+      const useData = {
+        email: sessionStorage.getItem("email"),
+        podcast_name: name,
+      };
+      axios
+        .post(`${process.env.REACT_APP_LOGIN_URI}/isLiked`, useData)
+        .then((res) => {
+          console.log(res.data);
+          setIsLiked(res.data);
+        });
+    } catch (error) {
+      console.error(error);
+    }
+  }, [name]);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const userData = {
+        email: sessionStorage.getItem("email"),
+        podcast_name: name,
+        isLiked: !isLiked,
+      };
+      await axios
+        .post(`${process.env.REACT_APP_LOGIN_URI}/button-click`, userData)
+        .then((res) => {
+          console.log(res.data);
+          setIsLiked(res.data);
+        });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const videoContainerStyle = {
     position: "relative",
     width: `100%`,
@@ -54,7 +91,7 @@ const Card = ({ name, speaker, category, type, description, videos }) => {
       </div>
       <div className="flex flex-wrap w-full h-20 items-center justify-center">
         <button
-          onClick={() => setIsLiked(!isLiked)}
+          onClick={handleSubmit}
           className="rounded-full bg-transparent w-10 h-10 hover:bg-slate-700 p-2"
         >
           <FontAwesomeIcon

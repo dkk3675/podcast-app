@@ -27,6 +27,7 @@ const Login = ({ setCreateAccount, setIsLogged,setIsAdmin }) => {
             }
             sessionStorage.setItem("name", res.data.user.name);
             sessionStorage.setItem("isLogged", "true");
+            sessionStorage.setItem("email", res.data.user.email);
           } else {
             sessionStorage.setItem("name", "------------");
             sessionStorage.setItem("isLogged", "false");

@@ -34,7 +34,7 @@ const Dashboard = ({ medias }) => {
         <div className="flex w-full">
           <div className="flex flex-row overflow-x-scroll">
             {filteredDetails.length > 0 ? (
-              filteredDetails.map((media, index) => {
+              filteredDetails.sort((a, b) => b.favourites - a.favourites).map((media, index) => {
                 return (
                   <div key={index}>
                     <Card

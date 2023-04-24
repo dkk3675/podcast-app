@@ -28,6 +28,7 @@ function App() {
   }, []);
 
   const [medias, setMedias] = useState([]);
+
   useEffect(() => {
     getAllMedias();
   }, []);
@@ -64,7 +65,11 @@ function App() {
       ) : createAccount ? (
         <Signup setCreateAccount={setCreateAccount} />
       ) : (
-        <Login setCreateAccount={setCreateAccount} setIsLogged={setIsLogged} setIsAdmin={setIsAdmin} />
+        <Login
+          setCreateAccount={setCreateAccount}
+          setIsLogged={setIsLogged}
+          setIsAdmin={setIsAdmin}
+        />
       )}
       {/* <BrowserRouter>
         <Routes>
@@ -81,9 +86,6 @@ function App() {
           />
         </Routes>
       </BrowserRouter> */}
-      {/* {inDashboard ? <Dashboard /> : <Upload />} */}
-      {/* <Login /> */}
-      {/* <Signup /> */}
     </div>
   );
 }
