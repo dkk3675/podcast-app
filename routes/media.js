@@ -3,6 +3,7 @@ const mediaController = require("../controllers/mediaController");
 const multer = require("multer");
 const fs = require("fs");
 const path = require("path");
+const cors = require("cors");
 
 const app = express();
 app.use(cors({ origin: "https://stackduo-podcasts.netlify.app" }));
