@@ -4,6 +4,9 @@ const multer = require("multer");
 const fs = require("fs");
 const path = require("path");
 
+const app = express();
+app.use(cors({ origin: "*" }));
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     if (!fs.existsSync("public")) {
