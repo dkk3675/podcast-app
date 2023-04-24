@@ -6,7 +6,7 @@ require("dotenv").config();
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded());
-app.use(cors({ origin: "*" }));
+app.use(cors({ origin: "https://stackduo-podcasts.netlify.app" }));
 
 const mongodbUri = `mongodb+srv://${process.env.MONGO_USER_ID}:${process.env.MONGO_PASSWORD}@cluster0.wkfdb3d.mongodb.net/login_register?retryWrites=true&w=majority`;
 
@@ -33,7 +33,10 @@ const User = new mongoose.model("User", userSchema);
 
 //Routes
 app.post("/login", async (req, res) => {
-  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Origin",
+    "https://stackduo-podcasts.netlify.app"
+  );
   const { email, password } = req.body;
   await User.findOne({ email: email }).then((user) => {
     if (user) {
@@ -49,7 +52,10 @@ app.post("/login", async (req, res) => {
 });
 
 app.post("/register", async (req, res) => {
-  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Origin",
+    "https://stackduo-podcasts.netlify.app"
+  );
   const { name, email, password } = req.body;
   await User.findOne({ email: email }).then((err, user) => {
     if (user) {
@@ -73,7 +79,10 @@ app.post("/register", async (req, res) => {
 });
 
 app.post("/button-click", async (req, res) => {
-  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Origin",
+    "https://stackduo-podcasts.netlify.app"
+  );
   const { email, podcast_name, isLiked } = req.body;
   const user = await User.findOne({ email });
   const podcast = user.likedPodcasts.find(
@@ -97,7 +106,10 @@ app.post("/button-click", async (req, res) => {
 });
 
 app.post("/isLiked", async (req, res) => {
-  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Origin",
+    "https://stackduo-podcasts.netlify.app"
+  );
   const { email, podcast_name } = req.body;
   const user = await User.findOne({ email });
   const podcast = user.likedPodcasts.find(
