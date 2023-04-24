@@ -6,7 +6,7 @@ const path = require("path");
 require("dotenv").config();
 
 const app = express();
-app.use(cors({ origin: "*" }));
+app.use(cors({ origin: '*' }));
 
 const mediaRoutes = require("./routes/media");
 
