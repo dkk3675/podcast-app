@@ -106,6 +106,6 @@ app.post("/isLiked", async (req, res) => {
   }
 });
 
-app.listen(9002, () => {
+app.listen(process.env.PORT, () => {
   console.log("BE started at port 9002");
 });
