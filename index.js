@@ -27,6 +27,6 @@ mongoose.connection.on("error", (err) => {
   console.log("Error connecting to mongo", err);
 });
 
-app.listen(4000, () => {
+app.listen(process.env.PORT, () => {
   console.log("App is running on PORT 4000");
 });
