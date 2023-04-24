@@ -1,6 +1,7 @@
 const Media = require("../Models/Media");
 
 exports.getAll = async (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
   try {
     const media = await Media.find();
 
@@ -12,6 +13,7 @@ exports.getAll = async (req, res) => {
 };
 // Backendurl/public/videos/file_name.mp4
 exports.create = async (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
   const { name, description, category, type, speaker } = req.body;
   let videosPaths = [];
 
@@ -40,6 +42,7 @@ exports.create = async (req, res) => {
 };
 
 exports.like = async (req, res) => {
+  res.header("Access-Control-Allow-Origin", "*");
   console.log(req.body);
   const { email, podcast_name, isLiked } = req.body;
 
