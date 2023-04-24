@@ -1,6 +1,6 @@
 # GO TO `backend` BRANCH & CLONE IT & RUN THE FOLLOWING COMMANDS FOR LOCAL TESTING PURPOSES, 
-`cd backend
-npm install
+`cd backend\n
+npm install\n
 npm start`
 
 
