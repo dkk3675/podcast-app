@@ -3,10 +3,10 @@ const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
 const cors = require("cors");
 const path = require("path");
-require('dotenv').config();
+require("dotenv").config();
 
 const app = express();
-app.use(cors());
+app.use(cors({ origin: "*" }));
 
 const mediaRoutes = require("./routes/media");
 
