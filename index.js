@@ -80,12 +80,12 @@ app.post("/button-click", async (req, res) => {
     user.likedPodcasts.push({ podcastName: podcast_name, isLiked });
   }
 
-  user.save((err) => {
-    if (err) {
-      console.log(err);
+  user.save().then((data) => {
+    if (data) {
+      res.send(isLiked);
       //   res.send({ message: false });
     } else {
-      res.send(isLiked);
+      console.log(err);
     }
   });
 });
