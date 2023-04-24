@@ -6,7 +6,7 @@ require("dotenv").config();
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded());
-app.use(cors({ origin: "*" }));
+app.use(cors({ origin: process.env.FRONTEND_URL }));
 
 const mongodbUri = `mongodb+srv://${process.env.MONGO_USER_ID}:${process.env.MONGO_PASSWORD}@cluster0.wkfdb3d.mongodb.net/login_register?retryWrites=true&w=majority`;
 
