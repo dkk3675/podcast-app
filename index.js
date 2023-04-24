@@ -1,12 +1,12 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-require('dotenv').config();
+require("dotenv").config();
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded());
-app.use(cors());
+app.use(cors({ origin: "*" }));
 
 const mongodbUri = `mongodb+srv://${process.env.MONGO_USER_ID}:${process.env.MONGO_PASSWORD}@cluster0.wkfdb3d.mongodb.net/login_register?retryWrites=true&w=majority`;
 
