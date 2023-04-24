@@ -6,7 +6,7 @@ const path = require("path");
 require("dotenv").config();
 
 const app = express();
-app.use(cors({ origin: "https://stackduo-podcasts.netlify.app" }));
+app.use(cors({ origin: "https://stackduo-podcasts.netlify.app/" }));
 
 const mediaRoutes = require("./routes/media");
 
