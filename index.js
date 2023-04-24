@@ -33,6 +33,15 @@ const User = new mongoose.model("User", userSchema);
 
 //Routes
 app.post("/login", async (req, res) => {
+  app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+    next();
+  });
   const { email, password } = req.body;
   await User.findOne({ email: email }).then((user) => {
     if (user) {
