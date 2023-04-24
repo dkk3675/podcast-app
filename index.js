@@ -32,9 +32,9 @@ const userSchema = new mongoose.Schema({
 const User = new mongoose.model("User", userSchema);
 
 //Routes
-app.post("/login", (req, res) => {
+app.post("/login", async (req, res) => {
   const { email, password } = req.body;
-  User.findOne({ email: email }, (err, user) => {
+  await User.findOne({ email: email }).then((user) => {
     if (user) {
       if (password === user.password) {
         res.send({ message: "Login Successful", user: user });
@@ -47,9 +47,9 @@ app.post("/login", (req, res) => {
   });
 });
 
-app.post("/register", (req, res) => {
+app.post("/register", async (req, res) => {
   const { name, email, password } = req.body;
-  User.findOne({ email: email }, (err, user) => {
+  await User.findOne({ email: email }).then((err, user) => {
     if (user) {
       res.send({ message: "User already registered" });
     } else {
@@ -58,12 +58,10 @@ app.post("/register", (req, res) => {
         email,
         password,
       });
-      user.save((err) => {
-        if (err) {
-          res.send(err);
-        } else {
-          res.send({ message: "Successfully Registered, Please login now." });
-        }
+      user.save().then((data) => {
+        res.send({ message: "Successfully Registered, Please login now." });
+      }).catch((err) => {
+        console.log(err);
       });
     }
   });
