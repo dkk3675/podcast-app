@@ -49,7 +49,10 @@ const Signup = ({ setCreateAccount }) => {
 
   return (
     <div className="flex flex-wrap flex-col h-screen w-full bg-slate-600 items-center justify-center">
-      <div className="flex flex-wrap flex-col w-1/2 bg-white p-5 rounded-xl">
+      <form
+        onSubmit={handleSignup}
+        className="flex flex-wrap flex-col w-1/2 bg-white p-5 rounded-xl"
+      >
         <div className="flex flex-wrap flex-row w-full justify-center">
           <h1 className="text-2xl font-bold">Signup</h1>
         </div>
@@ -86,7 +89,7 @@ const Signup = ({ setCreateAccount }) => {
         </div>
         <div className="flex flex-wrap flex-row w-full justify-center">
           <button
-            onClick={handleSignup}
+            type="submit"
             className="w-1/2 h-12 rounded-xl border-2 border-gray-400 p-2 m-2 bg-red-600 text-white font-bold"
           >
             Signup
@@ -105,7 +108,7 @@ const Signup = ({ setCreateAccount }) => {
             cookiePolicy={"single_host_origin"}
           />
         </div> */}
-      </div>
+      </form>
     </div>
   );
 };
